@@ -9,6 +9,6 @@ entries:
     name: pat
     type: application
     urls:
-    - https://magichuihui.github.io/pattest/pat-0.1.0.tgz
+    - https://amyinfo.github.io/gh-pages/pat-0.1.0.tgz
     version: 0.1.0
 generated: "2026-04-25T12:10:31.253174492+08:00"
