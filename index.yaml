@@ -3,6 +3,16 @@ entries:
   pat:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2026-04-25T05:10:07.387228911Z"
+    description: A Helm chart for Kubernetes
+    digest: 574ab5014c38be37828fb81a2118c4fb03153eab8875430297d0c302ea734b93
+    name: pat
+    type: application
+    urls:
+    - https://github.com/amyinfo/gh-pages/releases/download/pat-0.1.3/pat-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2026-04-25T12:41:09.554632706+08:00"
     description: A Helm chart for Kubernetes
     digest: 9d57941804f1c6bd69fefb9daec9dfcbbf6227069d0b6f35bd7cbd96e83e7598
@@ -14,6 +24,16 @@ entries:
   test1:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2026-04-25T05:10:07.522129444Z"
+    description: A Helm chart for Kubernetes
+    digest: d8d890f33013beadb0d26bb7067c7384dab0853542e7426d76f0ad37eed8330c
+    name: test1
+    type: application
+    urls:
+    - https://github.com/amyinfo/gh-pages/releases/download/test1-0.1.4/test1-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2026-04-25T12:41:09.55527109+08:00"
     description: A Helm chart for Kubernetes
     digest: 44e9492a73c3a72766d0c05062c920b8ba9ab198978e1c9ac26074a14b006226
@@ -22,4 +42,4 @@ entries:
     urls:
     - https://amyinfo.github.io/gh-pages/test1-0.1.1.tgz
     version: 0.1.1
-generated: "2026-04-25T12:41:09.553949309+08:00"
+generated: "2026-04-25T05:10:07.522141557Z"
