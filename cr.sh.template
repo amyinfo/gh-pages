@@ -18,7 +18,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-DEFAULT_CHART_RELEASER_VERSION=v1.7.0
+DEFAULT_CHART_RELEASER_VERSION=v1.8.1
 
 show_help() {
   cat <<EOF
@@ -251,7 +251,7 @@ install_chart_releaser() {
   # Use Go to install chart-releaser
   if ! command -v cr &>/dev/null; then
     echo "Installing chart-releaser using go install..."
-    go install github.com/helm/chart-releaser/cmd/cr@${version}
+    go install github.com/helm/chart-releaser/cr@${version}
   fi
   # Add Go bin to PATH if not already present
   GOBIN=$(go env GOPATH)/bin
