@@ -48,7 +48,6 @@ main() {
   local charts_dir=charts
   local owner=
   local repo=
-  local install_dir=
   local install_only=
   local skip_packaging=
   local skip_existing=
@@ -179,12 +178,6 @@ parse_command_line() {
         shift
       fi
       ;;
-    -n | --install-dir)
-      if [[ -n "${2:-}" ]]; then
-        install_dir="$2"
-        shift
-      fi
-      ;;
     -i | --install-only)
       if [[ -n "${2:-}" ]]; then
         install_only="$2"
@@ -247,8 +240,6 @@ parse_command_line() {
     exit 1
   fi
 
-  install_dir="./.cr-bin"
-
   if [[ -n "$install_only" ]]; then
     echo "Will install cr tool and not run it..."
     install_chart_releaser
@@ -257,20 +248,20 @@ parse_command_line() {
 }
 
 install_chart_releaser() {
-  install_dir="./.cr-bin"
-  if [[ ! -d "$install_dir" ]]; then
-    mkdir -p "$install_dir"
-    architecture=linux_amd64
-    if [[ "$use_arm" = true ]]; then
-      architecture=linux_arm64
-    fi
-    echo "Installing chart-releaser on $install_dir..."
-    curl -sSLo "$install_dir/cr.tar.gz" "https://github.com/helm/chart-releaser/releases/download/$version/chart-releaser_${version#v}_${architecture}.tar.gz"
-    tar -xzf "$install_dir/cr.tar.gz" -C "$install_dir"
-    rm -f "$install_dir/cr.tar.gz"
+  # Use Go to install chart-releaser
+  if ! command -v cr &>/dev/null; then
+    echo "Installing chart-releaser using go install..."
+    go install github.com/helm/chart-releaser/cmd/cr@${version}
   fi
-  echo 'Adding cr directory to PATH...'
-  export PATH="$install_dir:$PATH"
+  # Add Go bin to PATH if not already present
+  GOBIN=$(go env GOPATH)/bin
+  case ":$PATH:" in
+    *":$GOBIN:"*) :;;
+    *)
+      export PATH="$GOBIN:$PATH"
+      echo "Added $GOBIN to PATH."
+      ;;
+  esac
 }
 
 lookup_latest_tag() {
