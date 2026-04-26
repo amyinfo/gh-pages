@@ -15,6 +15,8 @@ Export your GitHub token:
 
 ```bash
 export CR_TOKEN=your_github_token
+# Rename the cr.sh file
+mv cr.sh.template cr.sh
 ```
 
 ### 2. Prepare Your Repository
